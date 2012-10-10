@@ -22,6 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
+### Server Roles
+
+All instances are assigned the 'web' role by default, unless you assign
+an 'app' variable to the particular role you want to add servers to.
+
+You can change the roles of the servers before they're added by doing
+something like:
+
+`set :app, 'database'`
+
 ### Retrieving instances within Capistrano
 
 In your capistrano script:
