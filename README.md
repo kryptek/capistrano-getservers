@@ -22,14 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
+### Retrieving instances within Capistrano
 
 In your capistrano script:
 ```ruby
-get_servers({'app' => 'app_name', 'cluster' => 'cluster', 'environment' => 'environment' ... }
+get_servers({'app' => 'app_name', 'cluster' => 'cluster', 'environment' => 'environment' ... })
 ```
 
-Additionally, you can use the `parse_tags` function to create your Hash
-via the command line as follows:
+### Retrieving instances from your CLI
 
 In your capistrano script:
 ```ruby
@@ -38,7 +38,9 @@ cli_tags = parse(tags)
 get_servers(cli_tags)
 ```
 
-cap staging deploy TAGS=key1:value1,key2:value2,key3:value3...
+Then, via the command line:
+
+`$ cap staging deploy TAGS=key1:value1,key2:value2,key3:value3...`
 
 
 ## Contributing
