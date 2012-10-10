@@ -25,8 +25,7 @@ Or install it yourself as:
 
 In your capistrano script:
 ```ruby
-  `get_servers({'app' => 'app_name', 'cluster' => 'cluster',
-'environment' => 'environment' ... }`
+get_servers({'app' => 'app_name', 'cluster' => 'cluster', 'environment' => 'environment' ... }
 ```
 
 Additionally, you can use the `parse_tags` function to create your Hash
