@@ -21,7 +21,7 @@ module Capistrano
       #
       # Returns: Nothing
       #############################################################
-      def get_servers cli_tags
+      def get_servers(role=nil, cli_tags)
 
         ec2 = Fog::Compute::AWS.new(
           aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
@@ -31,7 +31,7 @@ module Capistrano
         ec2.servers.all.each do |instance|
           begin
             instance_tags = instance.tags.reject { |k,v| cli_tags[k] != instance.tags[k] }
-            server instance.public_ip_address, app.to_sym || :web if instance_tags.eql? cli_tags
+            server instance.public_ip_address, role || :web if instance_tags.eql? cli_tags
           rescue => error
           end
         end
