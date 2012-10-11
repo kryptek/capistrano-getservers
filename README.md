@@ -22,21 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-### Server Roles
-
-All instances are assigned the 'web' role by default, unless you assign
-an 'app' variable to the particular role you want to add servers to.
-
-You can change the roles of the servers before they're added by doing
-something like:
-
-`set :app, 'database'`
-
 ### Retrieving instances within Capistrano
 
 In your capistrano script:
 ```ruby
-get_servers({'app' => 'app_name', 'cluster' => 'cluster', 'environment' => 'environment' ... })
+get_servers(:db, {'app' => 'app_name', 'cluster' => 'cluster', 'environment' => 'environment' ... })
 ```
 
 ### Retrieving instances from your CLI
@@ -52,6 +42,13 @@ Then, via the command line:
 
 `$ cap staging deploy TAGS=key1:value1,key2:value2,key3:value3...`
 
+
+### Notes
+
+All servers will receive the role 'web' unless you specify a different
+role using the `get_servers` method.
+
+Example: `get_servers(:role,{})`
 
 ## Contributing
 
