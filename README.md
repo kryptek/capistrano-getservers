@@ -20,6 +20,15 @@ Or install it yourself as:
 
     $ gem install capistrano-getservers
 
+## Requirements
+Ruby Gems
+* `gem 'capistrano'`
+* `gem 'fog'`
+
+Environment variables
+* `export AWS_SECRET_ACCESS_KEY=''`
+* `export AWS_ACCESS_KEY_ID=''`
+
 ## Usage
 
 ### Retrieving instances within Capistrano
@@ -35,7 +44,7 @@ In your capistrano script:
 ```ruby
 set :tags, ENV['TAGS'] || {}
 cli_tags = parse(tags)
-get_servers(cli_tags)
+get_servers(:role, cli_tags)
 ```
 
 Then, via the command line:
@@ -48,7 +57,7 @@ Then, via the command line:
 All servers will receive the role 'web' unless you specify a different
 role using the `get_servers` method.
 
-Example: `get_servers(:role,{})`
+Example: `get_servers(:role,{'deploy' => 'some value', 'app' => 'some_value'})`
 
 ## Contributing
 
