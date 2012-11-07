@@ -35,7 +35,7 @@ Environment variables
 
 In your capistrano script:
 ```ruby
-get_servers(:db, {'app' => 'app_name', 'cluster' => 'cluster', 'environment' => 'environment' ... })
+get_servers(:db, 'us-east-1', {'app' => 'app_name', 'cluster' => 'cluster', 'environment' => 'environment' ... })
 ```
 
 ### Retrieving instances from your CLI
@@ -44,7 +44,7 @@ In your capistrano script:
 ```ruby
 set :tags, ENV['TAGS'] || {}
 cli_tags = parse(tags)
-get_servers(:role, cli_tags)
+get_servers(:role, region, cli_tags)
 ```
 
 Then, via the command line:
@@ -54,10 +54,19 @@ Then, via the command line:
 
 ### Notes
 
+You can pass `nil` as the second parameter to have capistrano-getservers
+default to the `us-east-1` region.
+
 All servers will receive the role 'web' unless you specify a different
 role using the `get_servers` method.
 
 Example: `get_servers(:role,{'deploy' => 'some value', 'app' => 'some_value'})`
+
+## Changelog
+
+Version 1.0.2:
+* Added region support for Getservers.  Had to change the function
+  get_servers for this, so it's now: get_servers(:role,'region',tags)
 
 ## Contributing
 
