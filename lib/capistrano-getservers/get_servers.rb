@@ -32,7 +32,23 @@ module Capistrano
         ec2.servers.all.each do |instance|
           begin
             instance_tags = instance.tags.reject { |k,v| cli_tags[k] != instance.tags[k] }
-            server instance.public_ip_address, role || :web if instance_tags.eql? cli_tags
+
+            #
+            # If instance is inside a VPC, fallback to the private id address when
+            # there isn't a public ip registered to the instance
+            #
+            # When outside a VPC, uses the public ip address
+            #
+            if instance.vpc_id != nil
+              if instance.public_ip_address != nil
+                server instance.public_ip_address, role || :web if instance_tags.eql? cli_tags
+              else
+                server instance.private_ip_address, role || :web if instance_tags.eql? cli_tags
+              end
+            else
+              server instance.public_ip_address, role || :web if instance_tags.eql? cli_tags
+            end
+
           rescue => error
           end
         end
