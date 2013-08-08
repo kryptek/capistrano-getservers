@@ -51,6 +51,17 @@ Then, via the command line:
 
 `$ cap staging deploy TAGS=key1:value1,key2:value2,key3:value3...`
 
+### Instances behind Amazon's VPC
+If you have instances located in a VPC with no public IP address,
+capistrano-getservers will return their private ip address. You will
+then need to use capistrano's gateway support to deploy to these
+machines.
+
+The following line of code accomplishes just that:
+
+```
+set :gateway, "gateway_address"
+```
 
 ### Notes
 
