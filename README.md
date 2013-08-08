@@ -75,6 +75,10 @@ Example: `get_servers(:role, 'us-east-1', {'deploy' => 'some value', 'app' => 's
 
 ## Changelog
 
+Version 1.0.3:
+* get_servers now returns private instance ip addresses if no public
+  address is available. See VPC notes above for more info.
+
 Version 1.0.2:
 * Added region support for Getservers.  Had to change the function
   get_servers for this, so it's now: get_servers(:role,'region',tags)
