@@ -32,7 +32,7 @@ module Capistrano
         ec2.servers.all.each do |instance|
           begin
             instance_tags = instance.tags.reject { |k,v| cli_tags[k] != instance.tags[k] }
-            server instance.public_ip_address, role || :web if instance_tags.eql? cli_tags
+            server (instance.public_ip_address || instance.private_ip_address), (role || :web) if instance_tags.eql?(cli_tags)
           rescue => error
           end
         end
