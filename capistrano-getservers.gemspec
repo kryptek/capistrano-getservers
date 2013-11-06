@@ -5,11 +5,11 @@ require 'capistrano-getservers/get_servers'
 
 Gem::Specification.new do |gem|
   gem.name          = "capistrano-getservers"
-  gem.version       = '1.0.4'
-  gem.authors       = ["Alfred Moreno"]
-  gem.email         = ["alfred.moreno@zumba.com"]
-  gem.description   = %q{A capistrano plugin for simplifying EC2 deployment processes}
-  gem.summary       = %q{A capistrano plugin for simplifying EC@ deployment processes}
+  gem.version       = '2.0.1'
+  gem.authors       = ["Alfred Moreno",'David Collom']
+  gem.email         = ["alfred.moreno@zumba.com",'david@collom.co.uk']
+  gem.description   = %q{A capistrano plugin for simplifying FOG deployment processes}
+  gem.summary       = %q{A capistrano plugin for simplifying FOG deployment processes}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
