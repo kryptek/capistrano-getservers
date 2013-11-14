@@ -52,7 +52,7 @@ get_servers(:app, :ord, ['server1','server2','server3'])
 ### Retrieving instances from your CLI
 
 First, add support for CLI arguments. I haven't personally tested using
-both AWS and Rackspace, but if you need to, it should work just fine, really.
+both AWS and Rackspace at the same time, but if you need to, it should work just fine, really.
 
 #### AWS EC2
 In your capistrano script:
