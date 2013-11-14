@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = '2.0.0'
   gem.authors       = ["Alfred Moreno"]
   gem.email         = ["alfred.moreno@zumba.com"]
-  gem.description   = %q{A capistrano plugin for simplifying deployment processes}
-  gem.summary       = %q{A capistrano plugin for simplifying deployment processes}
+  gem.description   = %q{A capistrano plugin for simplifying deployment processes to rackspace or amazon ec2}
+  gem.summary       = %q{A capistrano plugin for simplifying dynamic deployment processes to rackspace or amazon ec2}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
