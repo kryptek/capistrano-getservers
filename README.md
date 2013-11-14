@@ -98,6 +98,7 @@ All servers will receive the role 'web' unless you specify a different
 role using the `get_servers` method.
 
 Example: `get_servers(:role, 'us-east-1', {'deploy' => 'some value', 'app' => 'some_value'})`
+
 Example: `get_servers(:role, :ord, ['web001','dbserver'])`
 
 ## Changelog
