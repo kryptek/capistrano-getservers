@@ -43,7 +43,7 @@ module Capistrano
               )
 
               rackspace.servers.select do |rackspace_server|
-                if cli_tags.include?(rackspace_server.name)
+                if cli_tags.include?(rackspace_server.name) || rackspace_server.name =~ Regexp.new(cli_tags)
                   server (rackspace_server.ipv4_address || rackspace_server.addresses['private']['addr']), (role || :web)
                 end
               end
