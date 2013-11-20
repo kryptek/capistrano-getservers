@@ -17,7 +17,6 @@ module Capistrano
           _cset(:rackspace_api_key, ENV['RACKSPACE_API_KEY'])
           _cset(:rackspace_username, ENV['RACKSPACE_USERNAME'])
           _cset(:default_role, :web)
-          _cset(:require_ready, true)
 
           #############################################################
           # def get_servers
@@ -44,8 +43,7 @@ module Capistrano
               )
 
               rackspace.servers.select do |rackspace_server|
-                continue if (fetch(:require_ready) && !rackspace_server.ready?)
-                if cli_tags.include?(rackspace_server.name)
+                if cli_tags.include?(rackspace_server.name) && rackspace_server.ready?
                   server (rackspace_server.ipv4_address || rackspace_server.addresses['private']['addr']), (role || :web)
                 end
               end
@@ -59,9 +57,10 @@ module Capistrano
 
               ec2.servers.all.each do |instance|
                 begin
-                  continue if (fetch(:require_ready) && !instance.ready?)
                   instance_tags = instance.tags.reject { |k,v| cli_tags[k] != instance.tags[k] }
-                  server (instance.public_ip_address || instance.private_ip_address), (role || :web) if instance_tags.eql?(cli_tags)
+                  if instance_tags.eql?(cli_tags) && instance.ready?)
+                    server (instance.public_ip_address || instance.private_ip_address), (role || :web)
+                  end
                 rescue
                 end
               end
